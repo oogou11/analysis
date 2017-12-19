@@ -1,0 +1,55 @@
+{% load staticfiles %}
+
+<head>
+    <link href="{% static "web/vendors/css/font-awesome.min.css" %}" rel="stylesheet" />
+    <link href="{% static "web/vendors/css/simple-line-icons.min.css" %}" rel="stylesheet" />
+    <link href="{% static "web/css/style.css" %}" rel="stylesheet" />
+</head>
+
+<body class="app flex-row align-items-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card mx-4">
+                    {% if form.non_field_errors %}
+                    <div class="messages">
+                        <div class="alert alert-warning alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>                            {{ form.non_field_errors }}
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="card-body p-4">
+                        <h1>注册</h1>
+                        <p class="text-muted">创建帐号</p>
+                        <form action="" method='post'>
+                            {% csrf_token %}
+                            <div class="input-group mb-3">
+                                <span class="input-group-addon"><i class="icon-user"></i></span> {{form.user_name}}
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <span class="input-group-addon">@</span> {{form.email}}
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <span class="input-group-addon"><i class="icon-lock"></i></span> {{form.password}}
+                            </div>
+
+                            <div class="input-group mb-4">
+                                <span class="input-group-addon"><i class="icon-lock"></i></span> {{form.confirm_password}} 
+                            </div>
+                            <button type="submit" class="btn btn-block btn-success">提交</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Bootstrap and necessary plugins -->
+    <script src="{% static "web/vendors/js/jquery.min.js" %}"></script>
+    <script src="{% static "web/vendors/js/popper.min.js" %}"></script>
+    <script src="{% static "web/vendors/js/bootstrap.min.js" %}"></script>
+    <script src="{% static "web/vendors/js/jquery.validate.min.js" %}"></script>
+</body>
